@@ -1,0 +1,44 @@
+# include<iostream>
+# include<cstdlib>
+
+using namespace std ;
+
+/* fizz buzz chalenge */
+
+int main(){
+
+ 
+for(int i=1 ; i<=100 ; i++){
+
+
+
+if(i%5==0 && i%3==0){
+
+ string msg="FizzBuzz";
+
+ string i ; 
+
+ i= msg ;
+
+std::cout<<i<<"\n" ;
+
+}else if (i%3==0){
+
+  string msg="Fizz";
+
+  std::cout<<msg<<"\n";
+
+}else if(i%5==0){
+
+  string msg="Buzz" ;
+  
+  std::cout<<msg<<"\n";
+
+}else {
+
+  std::cout<<i<<"\n";
+}
+
+}
+return 0  ;
+}
