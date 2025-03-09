@@ -1,0 +1,24 @@
+# include <iostream>
+
+
+using namespace std ;
+
+int main(){
+    
+
+    int age  ;
+
+    cout<<"Entrer votre age : \n";
+
+    cin>>age ;
+
+ if (!(age>=18)){
+
+    cout<<"Vous etes majeur !"<<endl ;
+ }else {
+
+    cout<<"Vous etes mimeur !"<<endl ;
+ }
+
+ return 0 ;
+}
