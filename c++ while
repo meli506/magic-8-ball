@@ -1,0 +1,25 @@
+#include <iostream> 
+using namespace std; 
+int main() { 
+   int x;
+   cout << "Entrez un nombre : "; 
+
+   cin >> x;
+
+   while (x != 0) { 
+
+      cout << " Vous avez entre : " << x << endl;
+     
+      if(x%2==0){
+
+      cout<<"le nombre est paire " ;
+      }else{
+
+        cout<<"le nombre est impaire ";
+      }
+    
+      break ;
+   }
+ 
+   return 0; 
+   }
