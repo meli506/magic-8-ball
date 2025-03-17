@@ -1,0 +1,75 @@
+# include <iostream>
+
+using namespace std;
+
+int main() {
+
+	double distance = 0;
+
+	double temps = 0;
+
+	int Nombre_de_pauses = 0;
+
+	double Duree_Totale_pauses = 0;
+
+	cout << "Analyse des Performances du coureur" << endl;
+
+	cout << "Entrez la distance totale parcourue (km) :" << endl;
+
+	cin >> distance;
+
+	cout << "Entrer le temps totale mis en (minutes) :" << endl;
+
+	cin >> temps;
+
+	cout << "Entrez le nombres totale  de pauses : " << endl;
+
+	cin >> Nombre_de_pauses;
+
+	cout << "Entrez la duree totale des pauses (minutes ) :" << endl;
+
+	cin >> Duree_Totale_pauses;
+
+	cout << "Resultats : " << endl;
+
+	double vitesse_moyenne;
+
+	vitesse_moyenne = (distance / (temps / 60));
+
+	cout << "Vitesse moyenne :" << vitesse_moyenne << "Km/h";
+
+	double vitesse_effective;
+
+	vitesse_effective = (distance / (temps - Duree_Totale_pauses));
+
+	cout << "Vitesse effective (sans pauses):" << vitesse_effective << "Km/h";
+
+	double pace;
+	pace = (temps / distance);
+
+	cout << "pace Moyen:" << pace << "min/km" << endl;
+
+	
+	if (Nombre_de_pauses >= 0 && Nombre_de_pauses <= 1) {
+
+		cout << "Endurance: Excellent" << endl;
+
+
+	}
+	else if (Nombre_de_pauses >= 2 && Nombre_de_pauses <= 3) {
+
+		cout << "Endureance : Bon" << endl;
+	}
+	else if (Nombre_de_pauses >= 4 && Nombre_de_pauses <= 6) {
+
+		cout << "Endurance : Moyen" << endl;
+
+	}
+	else if (Nombre_de_pauses > 6) {
+
+		cout << "Endurance :Faible" << endl;
+	}
+	cout << "Merci d'avoir utilise ce programme " << endl;
+
+	return 0;
+}
