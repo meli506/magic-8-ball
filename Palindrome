@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+// Define is_palindrome() here:
+bool is_palindrome(std::string text) {
+
+  int left = 0;
+  int right;
+
+  right = text.length() - 1;
+
+  while (left < right) {
+
+    if (text[right] == text[left]) {
+      right--;
+      left++;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
+int main() {
+  
+  std::cout << is_palindrome("madam") << "\n";
+  std::cout << is_palindrome("ada") << "\n";
+  std::cout << is_palindrome("lovelace") << "\n";
+  
+}
