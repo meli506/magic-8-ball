@@ -1,0 +1,160 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include<ctime>
+
+using namespace std;
+
+// Fonction récursive pour calculer la factorielle d'un nombre
+int factorielle(int n) {
+   if (n <= 1) return 1;
+   return n * factorielle(n - 1);
+}
+
+// Fonction pour vérifier si deux pointeurs pointent vers la même adresse
+bool memesAdresses(int *a, int *b) {
+   return a == b;
+}
+
+// Fonction pour échanger deux caractères via leurs pointeurs
+void echangerLettres(char *a, char *b) {
+   char temp = *a;
+   *a = *b;
+   *b = temp;
+}
+
+// Fonction pour ajouter un pourcentage aléatoire entre 15% et 25% à une valeur
+void ajouterPourcentage(double &valeur, double taux) {
+
+   
+   valeur += valeur * (taux / 100);
+}
+
+// Fonction pour compter les voyelles dans un mot
+void compterVoyelles(const string &mot, int &nbVoyelles) {
+   nbVoyelles = 0;
+   for (char c : mot) {
+       switch (tolower(c)) {
+           case 'a': case 'e': case 'i': case 'o': case 'u': case 'y':
+               nbVoyelles++;
+               break;
+       }
+   }
+}
+
+
+
+int main() {
+
+   srand(time(0)); // Initialisation du générateur de nombres aléatoires
+   
+   int choix;
+   do {
+
+       cout << "=== MENU DEVOIR 3 ===" << endl;
+       cout << "1. Calculer la factorielle (recursif)" << endl;
+       cout << "2. Verifier si deux pointeurs pointent a la meme adresse" << endl;
+       cout << "3. Echanger deux lettres dans un mot" << endl;
+       cout << "4. Ajouter un pourcentage a une valeur" << endl;
+       cout << "5. Compter les voyelles dans un mot" << endl;
+       cout << "6. Quitter" << endl;
+       cout << " Choix : ";
+       cin >> choix;
+       cout<<"\n  \n" ;
+       
+       switch (choix)
+        {
+           case 1:
+            {
+               // Factorielle récursive
+               int n;
+               cout << "Entrez un entier positif : ";
+               cin >> n;
+               if (n < 0) {
+                   cout << "Erreur : nombre negatif!" << endl;
+               } else {
+                   cout << n << "! = " << factorielle(n) << endl;
+               }
+               break;
+           }
+           
+           case 2: {
+               // Vérification d'adresses de pointeurs
+
+               int y = 10;
+               int x = 10;
+               int *p1 = &x;
+               int *p2 = &y;
+            
+               int *p3 = &x;
+               
+               cout << "p1 et p2 pointent vers la meme adresse ? " 
+                    << (memesAdresses(p1, p2) ? "Oui" : "Non") << endl;
+               cout << "p1 et p3 pointent vers la meme adresse ? " 
+                    << (memesAdresses(p1, p3) ? "Oui" : "Non") << endl;
+               break;
+           }
+           
+           case 3: {
+               // Échange de lettres dans un mot
+               string mot;
+               int pos1, pos2;
+               
+               cout << "Entrez un mot : ";
+               cin >> mot;
+               cout << "Position 1 (0-" << mot.length()-1 << ") : ";
+               cin >> pos1;
+               cout << "Position 2 (0-" << mot.length()-1 << ") : ";
+               cin >> pos2;
+               
+               if (pos1 < 0 || pos2 < 0 || pos1 >= mot.length() || pos2 >= mot.length()) {
+                   cout << "Positions invalides!" << endl;
+               } else {
+                   echangerLettres(&mot[pos1], &mot[pos2]);
+                   cout << "Mot modifie : " << mot << endl;
+               }
+               break;
+           }
+           
+           case 4: {
+               // Ajout de pourcentage
+               double valeur;
+
+               srand(time(0)) ; ;
+
+               double Taux =15.0 + static_cast<double>(rand()) /RAND_MAX*(25.0-15.0); // 15-25%
+               
+               cout << "Entrez la valeur initiale : ";
+               cin >> valeur;
+               ajouterPourcentage(valeur, Taux);
+               cout << "Pourcentage applique : " << Taux << "%" << endl;
+               cout << "Nouvelle valeur : " << valeur << endl;
+               break;
+           }
+           
+           case 5: {
+               // Comptage de voyelles
+               string mot;
+               int nbVoyelles;
+               
+               cout << "Entrez un mot : ";
+               cin >> mot;
+               compterVoyelles(mot, nbVoyelles);
+               cout << "Nombre de voyelles : " << nbVoyelles << endl;
+               break;
+           }
+           
+           case 6: {
+               cout << "Au revoir !" << endl;
+               break;
+           }
+           
+           default: {
+               cout << "Choix invalide." << endl;
+               break;
+           }
+       }
+   } while (choix != 6);
+   
+   return 0;
+}
