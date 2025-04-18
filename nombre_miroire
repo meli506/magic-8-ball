@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+ 
+using namespace std;
+ 
+// Fonction pour inverser les chiffres d'un nombre
+int inverser(int n) {
+    string s = to_string(n);
+    reverse(s.begin(), s.end());
+    return stoi(s);
+}
+ 
+// Fonction pour vérifier si un nombre est un miroir
+bool estMiroir(int n) {
+    return n == inverser(n);
+}
+ 
+// Fonction pour détecter si on a atteint le cycle maximal (4 étapes)
+bool detectorCycle(int etape) {
+    return etape >= 4;
+}
+ 
+// Fonction récursive principale qui applique le traitement
+int processus(int n, int etape) {
+    // Affichage de l'étape en cours
+    cout << "Etape " << etape << " : ";
+    
+    int inverse = inverser(n);
+    int petit = min(n, inverse);
+    int grand = max(n, inverse);
+    int resultat = grand - petit;
+    
+    cout << grand << " - " << petit << " = " << resultat << endl;
+    
+    // Vérification des conditions d'arrêt
+    if (resultat == 0) {
+        cout << "Fin : Le processus s'est arrete a 0 apres " << etape << " etape(s)." << endl;
+        return etape;
+    }
+    if (estMiroir(resultat)) {
+        cout << "Fin : Nombre miroir stable atteint (" << resultat << ") apres " << etape << " etape(s)." << endl;
+        return etape;
+    }
+    if (detectorCycle(etape)) {
+        cout << "Fin : Cycle detecte apres " << etape << " etape(s) sans atteindre un miroir stable." << endl;
+        return etape;
+    }
+    
+    // Appel récursif
+    return processus(resultat, etape + 1);
+}
+ 
+int main() {
+    int nombre;
+    
+    // Demande et validation de l'entrée utilisateur
+    cout << "Entrez un nombre entre 10 et 999 : ";
+    cin >> nombre;
+    
+    while (nombre < 10 || nombre > 999) {
+        cout << "Erreur. Veuillez entrer un entier a 2 ou 3 chiffres : ";
+        cin >> nombre;
+    }
+    
+    // Lancement du processus récursif
+    processus(nombre, 1);
+    
+    return 0;
+}
+ 
