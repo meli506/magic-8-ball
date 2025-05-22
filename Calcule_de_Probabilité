@@ -1,0 +1,43 @@
+#include <iostream>
+#include<ctime>
+
+
+using namespace std ;
+
+lancerde(){
+  
+    int lancer1= 1+ rand()%6 ;
+    int lancer2= 1+rand()%6 ;
+    int lancer= lancer1+lancer2 ;
+
+    return lancer ;
+
+}
+
+int main(){
+
+  srand(time(0)) ;
+
+  int nombre ;
+  int somme=0 ;
+
+  cout<<"Entrer une somme cible :";
+
+  cin>>nombre ;
+
+  for(int i=0 ;i<10000;i++){
+
+    int lancer = lancerde();
+    if(lancer==nombre){
+    
+        somme++ ;
+    
+    }
+  }
+
+    double probabilite=static_cast<double>(somme)/10000.0;
+
+    cout<<"la probabilite dapparition du nombre est :"<<probabilite<<endl ;
+
+    return 0 ;
+}
